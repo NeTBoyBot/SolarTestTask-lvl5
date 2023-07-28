@@ -4,7 +4,7 @@
         <name>SolarTestTask lvl5</name>
     </assembly>
     <members>
-        <member name="M:Doska.API.Controllers.UserController.Register(SolarTestTask_lvl5.Contracts.User.CreateUserRequest,System.Threading.CancellationToken)">
+        <member name="M:Doska.API.Controllers.UserController.Register(SolarTestTask_lvl5.Contracts.User.CreateUserRequest,Microsoft.AspNetCore.Http.IFormFile,System.Threading.CancellationToken)">
             <summary>
             Регистрация пользователя
             </summary>

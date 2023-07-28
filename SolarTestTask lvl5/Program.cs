@@ -2,19 +2,12 @@ using AutoMapper;
 using Board.Infrastucture.DataAccess;
 using Board.Infrastucture.DataAccess.Interfaces;
 using Board.Infrastucture.Repository;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.OpenApi.Models;
 using SolarTestTask_lvl5.Contracts.User;
 using SolarTestTask_lvl5.Infrastructure.MapProfiles;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
 using SolarTestTask_lvl5.Registrar;
-using System.ComponentModel;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -47,11 +40,7 @@ builder.Services.AddAuthorization();
 
 #endregion
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-
-
-
 
 builder.Services.AddSwaggerGen(options =>
 {
@@ -80,6 +69,13 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(builder => builder
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .WithExposedHeaders("Token-Expired")
+                .AllowCredentials()
+                .WithOrigins("http://localhost:11000"));
 
 app.UseHsts();
 

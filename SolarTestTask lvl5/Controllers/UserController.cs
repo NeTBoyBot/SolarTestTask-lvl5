@@ -1,15 +1,12 @@
-﻿
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SolarTestTask_lvl5.AppData.Contexts;
 using SolarTestTask_lvl5.Contracts.User;
-using System.Data.OleDb;
 using System.Net;
+
 
 namespace Doska.API.Controllers
 {
-    [ApiController]
+    //[ApiController]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -23,14 +20,28 @@ namespace Doska.API.Controllers
         /// Регистрация пользователя
         /// </summary>
         /// <param name="request"></param>
-        /// <param name="file"></param>
+        /// <param name="filePath"></param>
         /// <param name="token"></param>
         /// <returns></returns>
         [HttpPost("/Register")]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<IActionResult> Register(CreateUserRequest request, CancellationToken token)
+        public async Task<IActionResult> Register([FromBody]CreateUserRequest request,IFormFile filePath, CancellationToken token)
         {
-            var user = await _userService.CreateUserAsync(request,token);
+            byte[] photo;
+
+            if (filePath == null || filePath.Length == 0)
+                photo = new byte[0];
+            else
+            {
+                await using (var ms = new MemoryStream())
+                await using (var fs = filePath.OpenReadStream())
+                {
+                    await fs.CopyToAsync(ms);
+                    photo = ms.ToArray();
+                }
+            }
+
+            var user = await _userService.CreateUserAsync(request,photo,token);
 
             return Created("",user);
         }

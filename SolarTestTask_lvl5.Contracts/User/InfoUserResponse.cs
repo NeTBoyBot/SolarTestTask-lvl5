@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SolarTestTask_lvl5.Contracts.User
 {
@@ -32,5 +27,10 @@ namespace SolarTestTask_lvl5.Contracts.User
         /// Дата рождения пользователя
         /// </summary>
         public DateTime BirthDate { get; set; }
+
+        /// <summary>
+        /// Фотография
+        /// </summary>
+        public byte[] Photo { get; set; }
     }
 }

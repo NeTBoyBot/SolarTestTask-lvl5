@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SolarTestTask_lvl5.Contracts.User;
+﻿using SolarTestTask_lvl5.Contracts.User;
 
 namespace SolarTestTask_lvl5.AppData.Contexts
 {
@@ -24,7 +19,7 @@ namespace SolarTestTask_lvl5.AppData.Contexts
         /// <param name="registerUser"></param>
         /// <param name="cancellation"></param>
         /// <returns></returns>
-        Task<Guid> CreateUserAsync(CreateUserRequest createUser, CancellationToken cancellation);
+        Task<Guid> CreateUserAsync(CreateUserRequest createUser, byte[] photo, CancellationToken cancellation);
 
         /// <summary>
         /// Получение всех пользователей

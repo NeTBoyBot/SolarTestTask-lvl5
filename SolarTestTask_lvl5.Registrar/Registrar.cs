@@ -4,12 +4,8 @@ using Board.Infrastucture.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SolarTestTask_lvl5.AppData.Contexts;
+using SolarTestTask_lvl5.AppData.Contexts.Mail;
 using SolarTestTask_lvl5.DataAccess.Contexts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SolarTestTask_lvl5.Registrar
 {
@@ -30,8 +26,7 @@ namespace SolarTestTask_lvl5.Registrar
 
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IUserRepository, UserRepository>();
-
-
+            services.AddTransient<IMailService, MailService>();
 
             return services;
         }

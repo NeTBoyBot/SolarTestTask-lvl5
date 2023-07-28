@@ -1,11 +1,6 @@
 ﻿using AutoMapper;
 using SolarTestTask_lvl5.Contracts.User;
 using SolarTestTask_lvl5.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SolarTestTask_lvl5.Infrastructure.MapProfiles
 {

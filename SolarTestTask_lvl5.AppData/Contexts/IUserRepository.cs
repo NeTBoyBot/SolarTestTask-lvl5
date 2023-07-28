@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SolarTestTask_lvl5.Domain;
+﻿using SolarTestTask_lvl5.Domain;
 
 namespace SolarTestTask_lvl5.AppData.Contexts
 {
